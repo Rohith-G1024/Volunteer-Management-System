@@ -1,7 +1,7 @@
 home page ("/")
 
 -login 
- -admin login page(manual)             ("/admin/login")
+ -admin login page(manual)             ("/admin")
   -admin main page(dashboard)          ("/admin/home")
    -leaderboard                        ("/admin/leaderboard")
    -volunteers page                    ("/admin/volunteers")
@@ -19,5 +19,5 @@ home page ("/")
    -leaderboard                        ("/college/leaderboard")
 
 -signup
- -volunteer signup page                ("/signup/volunteer")
+ -volunteer signup page                ("/signup")
  -college signup page (optional)       ("/signup/college")
