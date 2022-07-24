@@ -1,0 +1,23 @@
+home page ("/")
+
+-login 
+ -admin login page(manual)             ("/admin/login")
+  -admin main page(dashboard)          ("/admin/home")
+   -leaderboard                        ("/admin/leaderboard")
+   -volunteers page                    ("/admin/volunteers")
+   -pc page                            ("/admin/pc")
+   -college page                       ("/admin/college")
+   -events page                        ("/admin/events")
+ -volunteer login page                 ("/volunteer/login")
+  -volunteer main page(dashboard)      ("/volunteer")
+   -events page (log-report)           ("/volunteer/events")
+   -leaderboard                        ("/volunteer/leaderboard")
+  -pc main page(dashboard)             ("/program_coordinator")
+   -leaderboard                        ("/program_coordinator/leaderboard")
+ -college login page                   ("/college/login")
+  -college main page(dashboard)        ("/college")
+   -leaderboard                        ("/college/leaderboard")
+
+-signup
+ -volunteer signup page                ("/signup/volunteer")
+ -college signup page (optional)       ("/signup/college")
