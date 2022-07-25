@@ -8,14 +8,15 @@ function InputField({ value, setValue, label, placeHolder, index }) {
     setFlag(!flag);
   }
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-row justify-between">
+    <div className="flex flex-col mx-[20vw] py-2">
+      <div className="flex flex-row justify-between text-lg font-semibold">
         <label className="text-gray-800" htmlFor={label}>
           {label}
         </label>
         {placeHolder.includes("*") && (
           <span className=" place-content-end">
             <button
+              className="px-2 py-1 mb-1 rounded hover:bg-blue-400 text-sm bg-blue-300"
               onClick={(e) => {
                 e.preventDefault();
                 toggle();
@@ -28,7 +29,7 @@ function InputField({ value, setValue, label, placeHolder, index }) {
       </div>
 
       <input
-        className="px-2"
+        className="px-2 mb-2 py-1 rounded-lg"
         type={flag ? "text" : type[index]} //placeHolder === "DD/MM/YYYY" ? "date" : "text"}
         value={value}
         onChange={(e) => {
@@ -117,6 +118,8 @@ function SignUp(props) {
       setFinalTypeValue(4);
     } else if (subType === "volunteer") {
       setTypeValue(1);
+    } else {
+      setTypeValue(0);
     }
   }, [subType]);
 
@@ -127,7 +130,22 @@ function SignUp(props) {
       setFinalTypeValue(2);
     } else if (type == "sd") {
       setFinalTypeValue(3);
+    } else {
+      setFinalTypeValue(0);
     }
+    setName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setPhone("");
+    setDob("");
+    setGender("");
+    setCollegeName("");
+    setCourse("");
+    setProfession("");
+    setRepName("");
+    setGroupSize(0);
+    setAddress("");
   }, [type]);
 
   function onSubmit() {
@@ -183,12 +201,11 @@ function SignUp(props) {
 
   return (
     <div
-      className={`bg-blue-50 w-screen pt-[40px] h-${Math.max(
-        "auto",
-        "screen"
-      )} mb-[10vh]`}
+      className={`bg-blue-50 w-screen pt-[40px] h-${
+        !typeValue && !finalTypeValue ? "screen" : "auto"
+      } pb-[${finalTypeValue ? "90" : "10"}vh]`}
     >
-      <div className="rounded ring-1 bg-blue-100 ml-[10vw] w-[75vw] grid place-items-center h-auto py-[5vh]">
+      <div className="rounded ring-1 bg-blue-100 ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
         <div className="px-3 py-4 grid place-items-center text-3xl font-bold ">
           Fill the Signup form
         </div>
@@ -198,9 +215,15 @@ function SignUp(props) {
             onSubmit();
           }}
         >
-          <div className="px-5 py-2">
-            <label htmlFor="type">Type</label>
+          <div className="px-5 py-2 ">
+            <label
+              className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
+              htmlFor="type"
+            >
+              Type
+            </label>
             <select
+              className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
               onChange={(e) => {
                 setSubType(e.target.value);
               }}
@@ -210,9 +233,15 @@ function SignUp(props) {
               <option value="college">College</option>
             </select>
             {typeValue === 1 && (
-              <div>
-                <label htmlFor="type">Volunteer Type</label>
+              <div className="mt-5">
+                <label
+                  className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
+                  htmlFor="type"
+                >
+                  Volunteer Type
+                </label>
                 <select
+                  className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                   onChange={(e) => {
                     setType(e.target.value);
                   }}
@@ -226,10 +255,14 @@ function SignUp(props) {
                   <div>
                     <Basic basic_input={basic_input} Inputfield={InputField} />
                     <div className="flex flex-col">
-                      <label className="text-gray-800" htmlFor="college">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
                         College Name
                       </label>
                       <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                         onChange={(e) => {
                           setCollegeName(e.target.value);
                         }}
@@ -241,10 +274,14 @@ function SignUp(props) {
                       </select>
                     </div>
                     <div className="flex flex-col">
-                      <label className="text-gray-800" htmlFor="college">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
                         Course
                       </label>
                       <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                         onChange={(e) => {
                           setCourse(e.target.value);
                         }}
@@ -261,11 +298,15 @@ function SignUp(props) {
                   <div>
                     <Basic basic_input={basic_input} Inputfield={InputField} />
                     <div className="flex flex-col">
-                      <label className="text-gray-800" htmlFor="Profession">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="Profession"
+                      >
                         Profession
                       </label>
                       <input
                         type="text"
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                         value={profession}
                         onChange={(e) => {
                           setProfession(e.target.value);
@@ -279,12 +320,16 @@ function SignUp(props) {
                   <div>
                     <Basic basic_input={basic_input} Inputfield={InputField} />
                     <div className="flex flex-col">
-                      <label className="text-gray-800" htmlFor="RepName">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="RepName"
+                      >
                         Representative Name
                       </label>
                       <input
                         type="text"
                         value={repName}
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                         onChange={(e) => {
                           setRepName(e.target.value);
                         }}
@@ -292,12 +337,16 @@ function SignUp(props) {
                       />
                     </div>
                     <div className="flex flex-col">
-                      <label className="text-gray-800" htmlFor="Profession">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="Profession"
+                      >
                         Profession
                       </label>
                       <input
                         type="text"
                         value={profession}
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                         onChange={(e) => {
                           setProfession(e.target.value);
                         }}
@@ -305,12 +354,16 @@ function SignUp(props) {
                       />
                     </div>
                     <div className="flex flex-col">
-                      <label className="text-gray-800" htmlFor="GroupSize">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="GroupSize"
+                      >
                         Group Size
                       </label>
                       <input
                         type="number"
                         value={groupSize}
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
                         onChange={(e) => {
                           setGroupSize(e.target.value);
                         }}
@@ -324,12 +377,16 @@ function SignUp(props) {
             {typeValue === 2 && (
               <div>
                 <div className="flex flex-col">
-                  <label className="text-gray-800" htmlFor="Name">
+                  <label
+                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    htmlFor="Name"
+                  >
                     College Name
                   </label>
                   <input
                     type="text"
                     value={name}
+                    className="px-2 mb-2 py-1 rounded-lg mx-[20vw]"
                     onChange={(e) => {
                       setName(e.target.value);
                     }}
@@ -337,12 +394,16 @@ function SignUp(props) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-gray-800" htmlFor="email">
+                  <label
+                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    htmlFor="email"
+                  >
                     College Email ID
                   </label>
                   <input
                     type="text"
                     value={email}
+                    className="px-2 mb-2 py-1 rounded-lg mx-[20vw]"
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
@@ -350,12 +411,16 @@ function SignUp(props) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-gray-800" htmlFor="address">
+                  <label
+                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    htmlFor="address"
+                  >
                     Address
                   </label>
                   <input
                     type="text"
                     value={address}
+                    className="px-2 mb-2 py-1 rounded-lg mx-[20vw]"
                     onChange={(e) => {
                       setAddress(e.target.value);
                     }}
@@ -363,12 +428,16 @@ function SignUp(props) {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-gray-800" htmlFor="phone">
+                  <label
+                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    htmlFor="phone"
+                  >
                     Phone Number
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     value={phone}
+                    className="px-2 mb-2 py-1 rounded-lg mx-[20vw] "
                     onChange={(e) => {
                       setPhone(e.target.value);
                     }}
@@ -377,7 +446,16 @@ function SignUp(props) {
                 </div>
               </div>
             )}
-            <input type="submit" />
+            {typeValue && finalTypeValue ? (
+              <input
+                className={` ${
+                  !typeValue && !finalTypeValue && "hidden"
+                } grid ml-[34vw] mt-2 hover:scale-105 hover:bg-green-700 hover:text-white duration-200 place-items-center p-2 bg-green-400 rounded`}
+                type="submit"
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </form>
       </div>
