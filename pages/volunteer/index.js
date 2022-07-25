@@ -3,10 +3,10 @@ import Sidebar from "../../components/Sidebar";
 
 function VolunteerHomePage(props) {
   const content = [
-    { title: "Home", link: "/volunteer" },
-    { title: "Events", link: "/volunteer/events" },
-    { title: "Leaderboard", link: "/leaderboard" },
-    { title: "Logout", link: "/logout" },
+    { title: "Home", link: "/volunteer", logo: "/favicon.ico" },
+    { title: "Events", link: "/volunteer/events", logo: "/favicon.ico" },
+    { title: "Leaderboard", link: "/leaderboard", logo: "/favicon.ico" },
+    { title: "Logout", link: "/logout", logo: "/favicon.ico" },
   ];
   return (
     <div>
