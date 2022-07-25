@@ -112,6 +112,8 @@ function SignUp(props) {
     },
   ];
 
+  // const collegeInput;
+
   useEffect(() => {
     if (subType === "college") {
       setTypeValue(2);
@@ -148,7 +150,7 @@ function SignUp(props) {
     setAddress("");
   }, [type]);
 
-  function onSubmit() {
+  async function onSubmit() {
     if (password !== confirmPassword) {
       alert("Password and Confirm Password do not match");
       return;
@@ -163,6 +165,7 @@ function SignUp(props) {
         dob: dob,
         collegeName: collegeName,
         course: course,
+        type: finalTypeValue,
       };
     }
     if (finalTypeValue == 2) {
@@ -173,6 +176,7 @@ function SignUp(props) {
         phone: phone,
         dob: dob,
         profession: profession,
+        type: finalTypeValue,
       };
     }
     if (finalTypeValue == 3) {
@@ -184,6 +188,7 @@ function SignUp(props) {
         dob: dob,
         repName: repName,
         groupSize: groupSize,
+        type: finalTypeValue,
       };
     }
     if (finalTypeValue == 4) {
@@ -191,12 +196,22 @@ function SignUp(props) {
         name: name,
         email: email,
         password: password,
-        phone: phone,
-        dob: dob,
         address: address,
+        phone: phone,
+        type: finalTypeValue,
       };
     }
     console.log("response", finalTypeValue, response);
+    const res = await fetch('/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(response)
+    });
+    const data = await res.json();
+    console.log(data);
+
   }
 
   return (
@@ -408,6 +423,40 @@ function SignUp(props) {
                       setEmail(e.target.value);
                     }}
                     placeholder={"pes.pesu@edu"}
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label
+                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    htmlFor="email"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    value={password}
+                    className="px-2 mb-2 py-1 rounded-lg mx-[20vw]"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    placeholder={"********"}
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label
+                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    htmlFor="email"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    value={confirmPassword}
+                    className="px-2 mb-2 py-1 rounded-lg mx-[20vw]"
+                    onChange={(e) => {
+                      setConfirmPassword(e.target.value);
+                    }}
+                    placeholder={"********"}
                   />
                 </div>
                 <div className="flex flex-col">

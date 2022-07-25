@@ -12,6 +12,7 @@ export default async function addTest(req, res) {
     await connectMongo();
     console.log('CONNECTED TO MONGO');
 
+    console.log(req.body.name)
     console.log('CREATING DOCUMENT');
     const test = await Test.create(req.body);
     console.log('CREATED DOCUMENT');
