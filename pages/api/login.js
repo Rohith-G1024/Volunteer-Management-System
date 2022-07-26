@@ -47,9 +47,6 @@ export default async function handler(req, res) {
 
       return;
 
-      console.log("Document not found.");
-      res.status(400).json({ message: "login failed" });
-      return;
     } catch (error) {
       console.log(error);
       res.json({ error });

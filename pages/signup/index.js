@@ -209,6 +209,7 @@ function SignUp(props) {
       },
       body: JSON.stringify(response),
     });
+    console.log(res)
     const data = await res.json();
     console.log("response_data", data);
   }
