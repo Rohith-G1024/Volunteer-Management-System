@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Link from "next/link";
+import Router from "next/router";
 
 function Login({}) {
   const [email, setEmail] = useState("");
@@ -23,6 +25,19 @@ function Login({}) {
       },
     });
     console.log(res);
+    if (res.status === 200) {
+      alert("Login Successful");
+      var data = res.data.doc;
+      sessionStorage.setItem("email", data.email);
+      if (data.type === 1) {
+        return Router.push("/volunteer");
+      } else if (data.type === 2) {
+        return Router.push("/volunteer");
+      }
+      console.log(res.data.doc);
+    } else {
+      alert("Login Failed");
+    }
     // const data = await res.json();
     // console.log("response_data", data);
   }

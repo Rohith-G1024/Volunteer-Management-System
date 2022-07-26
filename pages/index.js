@@ -68,7 +68,7 @@ const HomePage = () => {
             }}
           ></input> */}
           <div className="mt-[150px] w-[50%] h-[40vh]  grid place-items-center">
-            <Link href="">
+            <Link href="/login">
               <a
                 className={`   bg-[#21374F]/90 hover:bg-[#00ffff]/50 px-8 py-2 text-white  hover:text-black hover:scale-95 duration-200`}
               >
