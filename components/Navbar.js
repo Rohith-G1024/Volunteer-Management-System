@@ -6,7 +6,7 @@ function NavBarOption({ item }) {
     <div className="px-10 py-4">
       <Link href={item.link}>
         <a>
-          <div className="text-lg px-3 py-2 bg-slate-600/30 hover:bg-[#21374F]/40 rounded border-1 ring-1  hover:rounded hover:scale-105 transition-all duration-200">
+          <div className="text-lg text-[#0ea5e9] px-2 py-1 ring-2 ring-[#0ea5e9]   -lg shadow-xl shadow-cyan-500     group-hover:    hover:rounded hover:scale-105 transition-all duration-200">
             {item.title}
           </div>
         </a>
@@ -18,7 +18,7 @@ function NavBarOption({ item }) {
 function Navbar({ content }) {
   return (
     <div>
-      <div className="w-screen group  h-[80px] bg-[#50ADBF]/90 shadow-md 0">
+      <div className="w-screen group  h-[70px] bg-navbar">
         <div className="flex flex-row justify-between">
           <div className="ml-5 px-2 py-2">
             <Link href="/">
@@ -26,8 +26,8 @@ function Navbar({ content }) {
                 <img
                   className="hover:scale-105 duration-200"
                   src="/sristhi-logo.jpg"
-                  height={50}
-                  width={50}
+                  height={45}
+                  width={45}
                 ></img>
               </a>
             </Link>

@@ -27,7 +27,7 @@ function Login({}) {
     });
     console.log(res);
     if (res.status === 200) {
-      alert("Login Successful");
+      // alert("Login Successful");
       var data = res.data.doc;
       sessionStorage.setItem("email", data.email);
       if (data.isPc) {
