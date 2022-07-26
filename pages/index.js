@@ -1,11 +1,10 @@
-import React from "react";
-
-const HomePage = () => {
+ 
+import Navbar from "../components/Navbar";
+export function Home() {
   return (
-    <div className="text-5xl font-bold grid h-screen place-items-center">
-      Volunteer Management System
+    <div className ="bg-index-pattern w-screen  bg-center bg-cover blur bg-no-repeat h-screen">
+    <Navbar/>
     </div>
-  );
-};
-
-export default HomePage;
+  )
+}
+export default Home;
