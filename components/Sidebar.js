@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 function Sidebar({ content }) {
-  const [view, setView] = useState(true);
+  const [view, setView] = useState(false);
   return (
     <div>
       <div className="w-auto h-screen bg-blue-100">
