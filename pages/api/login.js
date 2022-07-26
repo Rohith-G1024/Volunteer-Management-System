@@ -7,7 +7,7 @@ import College from "../../models/collegeModel";
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      console.log(res);
+      //console.log(res);
       //   console.log('CONNECTING TO MONGO');
       await connectMongo();
       //   console.log('CONNECTED TO MONGO');
