@@ -30,7 +30,9 @@ module.exports = {
       'silver': '#ecebff',
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
+      'grey': "#6b7280",
+      'black':"#0f172a",
     },
   },
-  plugins: [],
+  plugins: [  require('@tailwindcss/forms'),],
 };
