@@ -9,12 +9,9 @@ export default async function handler(req, res) {
     try {
       //   console.log('CONNECTING TO MONGO');
       await connectMongo();
-      //   console.log('CONNECTED TO MONGO');
-
-      //   console.log('CREATING DOCUMENT');
 
       if (req.body.type === 1) {
-        console.log("CREATING STUDENT");
+        // console.log("CREATING STUDENT");
         const add = await Student.create(req.body);
         res.status(200).json({ add });
       } else if (req.body.type === 2) {
