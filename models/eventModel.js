@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
 const eventSchema = new Schema({
-	pcId: String,
+	pcEmail: String,
 	title: String,
 	desc: String,
     imgLink: String,

@@ -17,8 +17,8 @@ const studentSchema = new Schema({
   course: String,
   type: Number,
   gender: String,
-  startTime: Date,
-  endTime: Date,
+  startTime: String,
+  endTime: String,
   eventsCompleted: [String],
   eventOngoing: String,
   isPc: Boolean

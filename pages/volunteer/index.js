@@ -16,6 +16,10 @@ function VolunteerHomePage(props) {
     { title: "Logout", link: "/logout", logo: "/favicon.ico" },
   ];
   const [isLogin, setIsLogin] = useState(true);
+  console.log(typeof window ==='undefined');
+  if (typeof window==='undefined'){
+    return Router.push("/login");
+  }
   const sessionMail = sessionStorage.getItem("email");
   var navBarContent = [
     {
