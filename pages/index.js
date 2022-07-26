@@ -86,10 +86,14 @@ const HomePage = () => {
           id="about"
           className="w-screen bg-gradient-to-tr from-gray-100 to-gray-900"
         >
-          <div className="text-5xl font-bold pt-[100px] ml-2 h-screen ">
+          <div className="text-5xl font-bold pt-[100px] ml-5 h-screen ">
             <Typewriter
-              onInit={(type) => {
-                type.typeString("About Us").start().pauseFor(2500).deleteAll();
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("About Us")
+                  .start()
+                  .pauseFor(2500)
+                  .deleteAll();
               }}
               options={{ loop: true }}
             />
