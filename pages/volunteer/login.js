@@ -102,8 +102,9 @@ class MyForm extends React.Component {
       return (
         
       <div class="z-10">
-        <div className = "bg-lgbackground2 w-screen  bg-center bg-cover bg-no-repeat h-screen " >
-        <div class="relative w-full filter">
+        <div className = "relative bg-lgbackground2 overflow-hidden w-screen  bg-center bg-cover bg-no-repeat h-screen " >
+        <div class="relative pb-[66%]">
+          <div class="absolute h-full w-full object-cover">
          <div class="z-20 pt-[150px] ">
          
          <div class=" border-sky border-4 filter blur-sm bg-lgbackground3 h-[400px] mx-[600px]  mt-[60px] -mb-[300px]"></div>
@@ -155,7 +156,7 @@ class MyForm extends React.Component {
           </div>
             </div>
           </div>
-          
+          </div>
      </div>
             
           
