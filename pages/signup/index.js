@@ -201,17 +201,16 @@ function SignUp(props) {
         type: finalTypeValue,
       };
     }
-    console.log("response", finalTypeValue, response);
-    const res = await fetch('/api/signup', {
-      method: 'POST',
+    //console.log("response", finalTypeValue, response);
+    const res = await fetch("/api/signup", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(response)
+      body: JSON.stringify(response),
     });
     const data = await res.json();
-    console.log(data);
-
+    console.log("response_data", data);
   }
 
   return (
