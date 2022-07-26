@@ -1,10 +1,11 @@
 import "../styles/globals.css";
+import { CookiesProvider } from "react-cookie"
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <CookiesProvider>
       <Component {...pageProps} />
-    </div>
+    </CookiesProvider>
   );
 }
 
