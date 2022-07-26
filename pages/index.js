@@ -26,7 +26,7 @@ const HomePage = () => {
       <Head>
         <title>Sristhi - NGO</title>
       </Head>
-      <Navbar className="fixed z-10" content={content} />
+      <Navbar className="fixed z-10 bg-[#21374F]" content={content} />
       <div className="bg-[url('/promo-1.jpg')]  h-screen bg-cover bg-right bg-no-repeat">
         <div className="flex flex-row h-screen">
           <div
@@ -41,7 +41,7 @@ const HomePage = () => {
             className={`  my-20 w-[60vw] h-[400px] rounded-xl ml-20 hover:scale-105 transition-all duration-200 ${
               view
                 ? "bg-[url('/ngo-child.jpg')] bg-auto  bg-no-repeat text-gray-200  duration-200"
-                : "bg-gradient-to-br from-[#21374F]/10  to-[#21374F]/30"
+                : "bg-[url('/plant.jpeg')] bg-cover  bg-no-repeat text-gray-200  duration-200"
             }`}
           >
             <div className="text-5xl font-bold mt-[100px] ml-2 font-poppins ">

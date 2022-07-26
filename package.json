@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "framer-motion": "^6.5.1",
     "mongodb": "^4.8.0",
     "mongoose": "^6.4.6",
     "mysql": "^2.18.1",
@@ -18,9 +19,9 @@
     "next-connect": "^0.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typewriter-effect": "^2.19.0",
-    "react-icons": "^4.4.0"
-    
+    "react-icons": "^4.4.0",
+    "react-intersection-observer": "^9.4.0",
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
