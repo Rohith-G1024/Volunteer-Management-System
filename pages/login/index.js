@@ -30,11 +30,18 @@ function Login({}) {
       alert("Login Successful");
       var data = res.data.doc;
       sessionStorage.setItem("email", data.email);
-      if (data.type === 1) {
-        return Router.push("/volunteer");
-      } else if (data.type === 2) {
-        return Router.push("/volunteer");
+      if (data.isPc) {
+        return Router.push("/pc");
+      } else {
+        if (data.type === 1) {
+          return Router.push("/volunteer");
+        } else if (data.type === 2) {
+          return Router.push("/volunteer");
+        } else if (data.type === 3) {
+          return Router.push("/volunteer");
+        }
       }
+
       console.log(res.data.doc);
     } else {
       alert("Login Failed");
