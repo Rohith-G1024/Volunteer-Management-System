@@ -16,7 +16,10 @@ function VolunteerHomePage(props) {
     { title: "Logout", link: "/logout", logo: "/favicon.ico" },
   ];
   const [isLogin, setIsLogin] = useState(true);
-  const sessionMail = sessionStorage.getItem("email");
+  if (sessionStorage) {
+    const sessionMail = sessionStorage.getItem("email");
+  }
+
   var navBarContent = [
     {
       title: "Home",
@@ -26,15 +29,19 @@ function VolunteerHomePage(props) {
       title: "Events",
       link: "/events",
     },
+    {
+      title: "Logout",
+      link: "/logout",
+    },
   ];
-  useEffect(() => {
+  /* useEffect(() => {
     if (sessionMail.length) {
       console.log("nish is mad");
       navBarContent.push({ title: "Logout", link: "/" });
     } else {
       navBarContent.push({ title: "Login", link: "/login" });
     }
-  }, [sessionMail]);
+  }, [sessionMail]); */
   return (
     <div>
       {sessionMail.length > 0 ? (

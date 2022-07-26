@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 const { useAnimation, motion } = require("framer-motion");
 const { useInView } = require("react-intersection-observer");
-import copy from "copy-to-clipboard";
 
 function EventHelper({ shadowColor, side, title, imgLink, desc, shareLink }) {
   const { ref, inView } = useInView({ threshold: 0.6 });
