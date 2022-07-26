@@ -68,7 +68,7 @@ const HomePage = () => {
             }}
           ></input> */}
           <div className="mt-[150px] w-[50%] h-[40vh]  grid place-items-center">
-            <Link href="">
+            <Link href="/login">
               <a
                 className={`   bg-[#21374F]/90 hover:bg-[#00ffff]/50 px-8 py-2 text-white  hover:text-black hover:scale-95 duration-200`}
               >
@@ -86,10 +86,14 @@ const HomePage = () => {
           id="about"
           className="w-screen bg-gradient-to-tr from-gray-100 to-gray-900"
         >
-          <div className="text-5xl font-bold pt-[100px] ml-2 h-screen ">
+          <div className="text-5xl font-bold pt-[100px] ml-5 h-screen ">
             <Typewriter
-              onInit={(type) => {
-                type.typeString("About Us").start().pauseFor(2500).deleteAll();
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("About Us")
+                  .start()
+                  .pauseFor(2500)
+                  .deleteAll();
               }}
               options={{ loop: true }}
             />
