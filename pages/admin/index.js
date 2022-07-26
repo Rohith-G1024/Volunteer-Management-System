@@ -23,7 +23,7 @@ const AdminLoginPage = () => {
     },
     {
       title: "Logout",
-      link: "/",
+      link: "/logout",
     },
   ];
   return (
