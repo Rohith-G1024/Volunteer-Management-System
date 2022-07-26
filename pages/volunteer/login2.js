@@ -1,11 +1,13 @@
+import axios from "axios";
 import React, { useState } from "react";
+
 
 function Login({}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [view, setView] = useState(false);
 
-  function onSubmit() {
+  async function onSubmit() {
     if (email === " " || password === " ") {
       alert("Please enter your email and password");
     }
@@ -14,6 +16,14 @@ function Login({}) {
       password: password,
     };
     console.log("req", requestBody);
+    //request api here
+    const res = await axios.get('/api/login',{params: {
+      email: email,
+      password: password,
+    }})
+    console.log(res)
+    // const data = await res.json();
+    // console.log("response_data", data);
   }
 
   return (
