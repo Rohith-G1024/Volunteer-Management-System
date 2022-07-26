@@ -7,11 +7,36 @@ const AdminEventsPage = () => {
   const shadowColor = ["shadow-cyan-500", "shadow-blue-500"];
   const side = ["left", "right"];
   const content = [
-    { title: "1" },
-    { title: "2" },
-    { title: "3" },
-    { title: "4" },
-    { title: "5" },
+    {
+      title: "Lorem ipsum dolor sit amet",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet pellentesque nibh, nec tincidunt ex. Nam ultrices lacus ut efficitur suscipit. Maecenas justo dui, finibus vitae risus at, rhoncus eleifend neque.",
+      imgLink: "/hpwp.jpg",
+      shareLink: "/events",
+    },
+    {
+      title: "Lorem ipsum dolor sit amet",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet pellentesque nibh, nec tincidunt ex. Nam ultrices lacus ut efficitur suscipit. Maecenas justo dui, finibus vitae risus at, rhoncus eleifend neque.",
+      imgLink: "/hpwp.jpg",
+      shareLink: "/events",
+    },
+    {
+      title: "Lorem ipsum dolor sit amet",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet pellentesque nibh, nec tincidunt ex. Nam ultrices lacus ut efficitur suscipit. Maecenas justo dui, finibus vitae risus at, rhoncus eleifend neque.",
+      imgLink: "/hpwp.jpg",
+      shareLink: "/events",
+    },
+    {
+      title: "Lorem ipsum dolor sit amet",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet pellentesque nibh, nec tincidunt ex. Nam ultrices lacus ut efficitur suscipit. Maecenas justo dui, finibus vitae risus at, rhoncus eleifend neque.",
+      imgLink: "/hpwp.jpg",
+      shareLink: "/events",
+    },
+    {
+      title: "Lorem ipsum dolor sit amet",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet pellentesque nibh, nec tincidunt ex. Nam ultrices lacus ut efficitur suscipit. Maecenas justo dui, finibus vitae risus at, rhoncus eleifend neque.",
+      imgLink: "/hpwp.jpg",
+      shareLink: "/events",
+    },
   ];
   const navBarContent = [
     {
@@ -52,7 +77,7 @@ const AdminEventsPage = () => {
               <EventHelper
                 side={side[index % 2]}
                 shadowColor={shadowColor[index % 2]}
-                title={item.title}
+                {...item}
               />
             );
           })}

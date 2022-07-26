@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
+import Navbar from "../../components/Navbar";
 
 function Login({}) {
   const [email, setEmail] = useState("");
@@ -42,8 +43,28 @@ function Login({}) {
     // console.log("response_data", data);
   }
 
+  const navBarContent = [
+    {
+      title: "Home",
+      link: "/",
+    },
+    {
+      title: "About Us",
+      link: "#about",
+    },
+    {
+      title: "Events",
+      link: "/events",
+    },
+    {
+      title: "Sign Up",
+      link: "/signup",
+    },
+  ];
+
   return (
     <div>
+      <Navbar content={navBarContent} />
       <div className="bg-blue-50 w-screen pt-[40px] h-screen pb-[10vh]">
         <div className="rounded ring-1 bg-blue-100 ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
           <div className="px-3 py-4 grid place-items-center text-3xl font-bold ">
