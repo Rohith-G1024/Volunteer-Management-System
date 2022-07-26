@@ -17,29 +17,35 @@ export default async function handler(req, res) {
 			if(err) console.log(err);
 			else if(doc) {
 				res.status(200).json({doc})
-				return;
+				// return;
+			}
+			else
+			{
+				General.findOne({email: email, password: password}, (err,doc)=> {
+					if(err) console.log(err);
+					else if(doc) {
+						console.log("here");
+						res.status(200).json({doc})
+					}
+					else{
+						Group.findOne({email: email, password: password}, (err,doc)=> {
+							if(err) console.log(err);
+							else if(doc) {
+								res.status(200).json({doc})
+								// return;
+							}
+							else{
+								console.log("here2");
+								console.log("Document not found.");
+								res.status(300).json({message: "login failed"});
+							}
+				
+						});
+					}
+				});
 			}
 		});
 
-		General.findOne({email: email, password: password}, (err,doc)=> {
-			if(err) console.log(err);
-			else if(doc) {
-				res.status(200).json({doc})
-				return;
-			}
-		});
-
-		Group.findOne({email: email, password: password}, (err,doc)=> {
-			if(err) console.log(err);
-			else if(doc) {
-				res.status(200).json({doc})
-				return;
-			}
-
-		});
-
-		console.log("Document not found.");
-		res.status(300).json({message: "login failed"});
 		return;
 
     } catch (error) {
