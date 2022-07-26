@@ -148,7 +148,7 @@ class MyForm extends React.Component {
               <div className="red">{this.state.errors.password1}</div>
               </div>  </div>
         <button className= 
-         "   relative Button  w-[300px] h-[60px] mt-[65px] mx-[690px] ring-2 text-center bg-lgbackground3   text-sky hover:bg-tealgrad hover:text-darkblue "
+         "   relative Button  w-[300px] h-[60px] mt-[45px] mx-[690px] ring-2 text-center bg-lgbackground3   text-sky hover:bg-tealgrad hover:text-darkblue "
          >
            SUBMIT</button>
           </form>
