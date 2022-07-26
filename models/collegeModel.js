@@ -13,7 +13,8 @@ const collegeSchema = new Schema({
   },
   address: String,
   phone: String,
-  type: Number
+  type: Number,
+  mouApproved: Boolean
 });
 
 const College = models.College || model('College', collegeSchema);

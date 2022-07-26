@@ -14,7 +14,11 @@ const groupSchema = new Schema({
   phone: String,
   repName: String,
   groupSize: Number,
-  type: Number
+  type: Number,
+  startTime: Date,
+  endTime: Date,
+  eventsCompleted: [String],
+  eventOngoing: String,
 
 });
 

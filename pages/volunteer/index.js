@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
+import Router from "next/router";
+
+function Login() {
+  return Router.push("/");
+}
 
 function VolunteerHomePage(props) {
   const sideBarContent = [
@@ -11,7 +16,10 @@ function VolunteerHomePage(props) {
     { title: "Logout", link: "/logout", logo: "/favicon.ico" },
   ];
   const [isLogin, setIsLogin] = useState(true);
-  const isLoginMail = sessionStorage.getItem("email");
+  if (sessionStorage) {
+    const sessionMail = sessionStorage.getItem("email");
+  }
+
   var navBarContent = [
     {
       title: "Home",
@@ -21,25 +29,35 @@ function VolunteerHomePage(props) {
       title: "Events",
       link: "/events",
     },
-    { title: "Login", link: "/login" },
+    {
+      title: "Logout",
+      link: "/logout",
+    },
   ];
-  useEffect(() => {
-    if (isLogin) {
+  /* useEffect(() => {
+    if (sessionMail.length) {
+      console.log("nish is mad");
       navBarContent.push({ title: "Logout", link: "/" });
     } else {
       navBarContent.push({ title: "Login", link: "/login" });
     }
-  }, [isLogin]);
+  }, [sessionMail]); */
   return (
     <div>
-      <Head>
-        <title>Home Page | Volunteers</title>
-      </Head>
-      <Navbar content={navBarContent} />
-      <div className="flex flex-row">
-        <Sidebar content={sideBarContent} />
-        {isLoginMail}
-      </div>
+      {sessionMail.length > 0 ? (
+        <div>
+          <Head>
+            <title>Home Page | Volunteers</title>
+          </Head>
+          <Navbar content={navBarContent} />
+          <div className="flex flex-row">
+            <Sidebar content={sideBarContent} />
+            {sessionMail}
+          </div>
+        </div>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
