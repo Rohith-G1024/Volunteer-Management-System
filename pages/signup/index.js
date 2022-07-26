@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar";
 //	import Student from "../../components/signUpHelpers/student";
 
 function InputField({ value, setValue, label, placeHolder, index }) {
@@ -63,6 +64,8 @@ function SignUp(props) {
   const [type, setType] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
+  const [availableStartTime, setAvailableStartTime] = useState("");
+  const [availableEndTime, setAvailableEndTime] = useState("");
 
   //student
   const [collegeName, setCollegeName] = useState("");
@@ -78,6 +81,31 @@ function SignUp(props) {
   //College
   const [address, setAddress] = useState("");
 
+  const time = [
+    "01:00",
+    "02:00",
+    "03:00",
+    "04:00",
+    "05:00",
+    "06:00",
+    "07:00",
+    "08:00",
+    "09:00",
+    "10:00",
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "16:00",
+    "17:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+    "23:00",
+  ];
   const basic_input = [
     { value: name, setValue: setName, label: "Name", placeHolder: "John Doe" },
     {
@@ -142,6 +170,8 @@ function SignUp(props) {
     setPhone("");
     setDob("");
     setGender("");
+    setAvailableStartTime("");
+    setAvailableEndTime("");
     setCollegeName("");
     setCourse("");
     setProfession("");
@@ -163,6 +193,9 @@ function SignUp(props) {
         password: password,
         phone: phone,
         dob: dob,
+        gender: gender,
+        availableStartTime: availableStartTime,
+        availableEndTime: availableEndTime,
         collegeName: collegeName,
         course: course,
         type: finalTypeValue,
@@ -175,6 +208,9 @@ function SignUp(props) {
         password: password,
         phone: phone,
         dob: dob,
+        gender: gender,
+        availableStartTime: availableStartTime,
+        availableEndTime: availableEndTime,
         profession: profession,
         type: finalTypeValue,
       };
@@ -186,6 +222,8 @@ function SignUp(props) {
         password: password,
         phone: phone,
         dob: dob,
+        availableStartTime: availableStartTime,
+        availableEndTime: availableEndTime,
         repName: repName,
         groupSize: groupSize,
         type: finalTypeValue,
@@ -209,18 +247,38 @@ function SignUp(props) {
       },
       body: JSON.stringify(response),
     });
-    console.log(res)
+    console.log(res);
     const data = await res.json();
     console.log("response_data", data);
   }
 
+  const navBarContent = [
+    {
+      title: "Home",
+      link: "/",
+    },
+    {
+      title: "About Us",
+      link: "#about",
+    },
+    {
+      title: "Events",
+      link: "/events",
+    },
+    {
+      title: "Login",
+      link: "/login",
+    },
+  ];
+
   return (
     <div
-      className={`bg-blue-50 w-screen pt-[40px] h-${
+      className={`bg-blue-50 w-screen h-${
         !typeValue && !finalTypeValue ? "screen" : "auto"
       } pb-[${finalTypeValue ? "90" : "10"}vh]`}
     >
-      <div className="rounded ring-1 bg-blue-100 ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
+      <Navbar content={navBarContent} />
+      <div className="rounded ring-1 bg-blue-100 mt-[40px] ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
         <div className="px-3 py-4 grid place-items-center text-3xl font-bold ">
           Fill the Signup form
         </div>
@@ -267,8 +325,73 @@ function SignUp(props) {
                   <option value="sd">Self Driven Group</option>
                 </select>
                 {finalTypeValue === 1 && (
-                  <div>
+                  <div className="">
                     <Basic basic_input={basic_input} Inputfield={InputField} />
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="Gender"
+                      >
+                        Gender
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="notsay">Rather Not Say</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
+                        Availablity Start Time
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setAvailableStartTime(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {time.map((item, index) => {
+                          return (
+                            <option key={index} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
+                        Availablity END Time
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setAvailableEndTime(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {time.map((item, index) => {
+                          return (
+                            <option key={index} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
                     <div className="flex flex-col">
                       <label
                         className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
@@ -315,6 +438,71 @@ function SignUp(props) {
                     <div className="flex flex-col">
                       <label
                         className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="Gender"
+                      >
+                        Gender
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setGender(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="notsay">Rather Not Say</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
+                        Availablity Start Time
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setAvailableStartTime(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {time.map((item, index) => {
+                          return (
+                            <option key={index} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
+                        Availablity END Time
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setAvailableEndTime(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {time.map((item, index) => {
+                          return (
+                            <option key={index} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="Profession"
                       >
                         Profession
@@ -334,6 +522,52 @@ function SignUp(props) {
                 {finalTypeValue === 3 && (
                   <div>
                     <Basic basic_input={basic_input} Inputfield={InputField} />
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
+                        Availablity Start Time
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setAvailableStartTime(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {time.map((item, index) => {
+                          return (
+                            <option key={index} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        htmlFor="college"
+                      >
+                        Availablity END Time
+                      </label>
+                      <select
+                        className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                        onChange={(e) => {
+                          setAvailableEndTime(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {time.map((item, index) => {
+                          return (
+                            <option key={index} value={item}>
+                              {item}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
                     <div className="flex flex-col">
                       <label
                         className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
