@@ -21,15 +21,14 @@ function VolunteerHomePage(props) {
       title: "Events",
       link: "/events",
     },
-    { title: "Login", link: "/login" },
   ];
   useEffect(() => {
-    if (isLogin) {
+    if (isLoginMail) {
       navBarContent.push({ title: "Logout", link: "/" });
     } else {
       navBarContent.push({ title: "Login", link: "/login" });
     }
-  }, [isLogin]);
+  }, [isLoginMail]);
   return (
     <div>
       <Head>
