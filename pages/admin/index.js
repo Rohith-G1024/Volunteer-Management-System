@@ -1,11 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import Head from "next/head";
+import axios from "axios";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
+import useSWR from "swr";
 
 const AdminLoginPage = () => {
   const sideBarContent = [
@@ -22,11 +24,59 @@ const AdminLoginPage = () => {
   const [imgLink, setImgLink] = useState("");
   const [type, setType] = useState("");
   const [pcEmail, setPcEmail] = useState("");
+  const [flag, setFlag] = useState(false);
 
   var columns = [];
   var rowData = [];
+  const [options, setOptions] = useState([]);
+  const [eventList, setEventList] = useState([]);
 
   const ref1 = useRef();
+
+  const fetcher1 = async () => {
+    const op1 = await axios.get("http://localhost:3000/api/event/getPC1");
+    const op2 = await axios.get("http://localhost:3000/api/event/getPC2");
+    const tempList = await axios.get("http://localhost:3000/api/event/view");
+    for (var i = 0; i < op1.data.doc.length; i++) {
+      options.push({
+        pcEmail: op1.data.doc[i].email,
+        name: op1.data.doc[i].name,
+      });
+      setOptions(options);
+    }
+    for (var i = 0; i < op2.data.doc.length; i++) {
+      options.push({
+        pcEmail: op2.data.doc[i].email,
+        name: op2.data.doc[i].name,
+      });
+      setOptions(options);
+    }
+    for (var i = 0; i < tempList.data.doc.length; i++) {
+      eventList.push({
+        pcEmail: tempList.data.doc[i].pcEmail,
+        title: tempList.data.doc[i].title,
+        desc: tempList.data.doc[i].desc,
+        imgLink: tempList.data.doc[i].imgLink,
+        type: tempList.data.doc[i].type,
+        status: tempList.data.doc[i].status,
+      });
+    }
+    setEventList(eventList);
+    console.log("eventlist", eventList);
+
+    //console.log("options", op1, op2, options);
+  };
+
+  if (!flag) {
+    fetcher1();
+    setFlag(true);
+  }
+
+  /* useEffect(() => {
+    setPcOptions(options);
+  }, [options]); */
+
+  //
 
   function handleCreateEventSubmit() {
     var data = {
@@ -35,6 +85,7 @@ const AdminLoginPage = () => {
       imgLink: imgLink,
       type: type,
       pcEmail: pcEmail,
+      //s_type: "null",
     };
     console.log("create-event", data);
   }
@@ -118,8 +169,13 @@ const AdminLoginPage = () => {
                           }}
                         >
                           <option value="">Select</option>
-                          <option value="t1@mail.com">t1</option>
-                          <option value="t2@mail.com">t2</option>
+                          {options.map((option, index) => {
+                            return (
+                              <option key={index} value={option.pcEmail}>
+                                {option.name}
+                              </option>
+                            );
+                          })}
                         </select>
                       </div>
                       <div className="flex flex-col mt-10 gap-2 text-lg">
