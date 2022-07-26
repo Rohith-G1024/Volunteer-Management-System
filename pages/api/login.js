@@ -2,7 +2,6 @@ import connectMongo from "../../utils/connectMongo";
 import Student from "../../models/studentModel";
 import General from "../../models/generalModel";
 import Group from "../../models/groupModel";
-import College from "../../models/collegeModel";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {

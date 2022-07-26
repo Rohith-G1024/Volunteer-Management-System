@@ -15,7 +15,14 @@ const studentSchema = new Schema({
   dob: Date,
   collegeName: String,
   course: String,
-  type: Number
+  type: Number,
+  gender: String,
+  startTime: Date,
+  endTime: Date,
+  eventsCompleted: [String],
+  eventOngoing: String,
+  isPc: Boolean
+
 
 });
 

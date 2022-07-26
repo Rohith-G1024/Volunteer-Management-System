@@ -14,7 +14,13 @@ const genSchema = new Schema({
   phone: String,
   dob: Date,
   profession: String,
-  type: Number
+  type: Number,
+  gender: String,
+  startTime: Date,
+  endTime: Date,
+  eventsCompleted: [String],
+  eventOngoing: String,
+  isPc: Boolean
 
 });
 
