@@ -7,6 +7,7 @@ const eventSchema = new Schema({
   imgLink: String,
   type: String,
   status: String,
+  stype: Number
 });
 
 const Event = models.Event || model("Event", eventSchema);
