@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react';
 
 export default function CopyExample() {
-
-  const [copySuccess, setCopySuccess] = useState('');
-  const textAreaRef = useRef(null);
+const [copySuccess, setCopySuccess] = useState('');
+const textAreaRef = useRef(null);
 
   function copyToClipboard(e) {
     textAreaRef.current.select();
@@ -12,12 +11,10 @@ export default function CopyExample() {
     // I prefer to not show the the whole text area selected.
     e.target.focus();
     setCopySuccess('Copied!');
-    
   };
 
   return (
     <div>
-      
        /* Logical shortcut for only displaying the 
           button if the copy command exists */
       {typeof window!=="undefined" && 
@@ -27,7 +24,6 @@ export default function CopyExample() {
           {copySuccess}
         </div>
       }
-
       <form>
         <textarea
           ref={textAreaRef} className="bg-white text-black h-20 w-40 " 
