@@ -59,7 +59,7 @@ function Login({}) {
                 College Email Id
               </label>
               <input
-                className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                className="px-2 mb-2 py-1 rounded-lg  mx-[20vw] placeholder-sky-400  "
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -70,7 +70,7 @@ function Login({}) {
             <div className="px-5 py-2 ">
               <div className="flex flex-row">
                 <label
-                  className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
+                  className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw] placeholder-sky-400 "
                   htmlFor="type"
                 >
                   Password
@@ -115,7 +115,7 @@ function Login({}) {
               </div>
               <input
                 type={view ? "text" : "password"}
-                className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                className="px-2 mb-2 py-1 rounded-lg  mx-[20vw] placeholder-sky-400 "
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -125,7 +125,7 @@ function Login({}) {
             </div>
             <input
               type="submit"
-              className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mx-[20vw]"
+              className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 placeholder-sky-400  rounded-lg mx-[20vw]"
             ></input>
           </form>
         </div>
