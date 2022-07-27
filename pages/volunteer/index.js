@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,  useState,  } from "react";
 import Head from "next/head";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import Router from "next/router";
 
 function Login() {
-  return Router.push("/");
+  useEffect(()=>{
+    alert("Please Login")
+    Router.push("/login");
+  },[])
+ /*  return Router.push("/"); */
+ 
 }
 
 function VolunteerHomePage(props) {
   const sideBarContent = [
     { title: "Home", link: "/volunteer", logo: "/favicon.ico" },
-    { title: "Events", link: "/volunteer/events", logo: "/favicon.ico" },
+    { title: "Events", link: "/events", logo: "/favicon.ico" },
     { title: "Leaderboard", link: "/leaderboard", logo: "/favicon.ico" },
     { title: "Logout", link: "/logout", logo: "/favicon.ico" },
   ];
   const [isLogin, setIsLogin] = useState(true);
   var sessionMail;
-  if (sessionStorage) {
+  if (typeof window!=="undefined") {
     sessionMail = sessionStorage.getItem("email");
   }
 
@@ -45,7 +50,7 @@ function VolunteerHomePage(props) {
   }, [sessionMail]); */
   return (
     <div>
-      {sessionMail.length > 0 ? (
+      { sessionMail && sessionMail.length > 0 ? (
         <div>
           <Head>
             <title>Home Page | Volunteers</title>

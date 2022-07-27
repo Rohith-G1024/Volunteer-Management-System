@@ -23,7 +23,7 @@ function Login(props) {
       <div className="bg-blue-50 w-screen pt-[40px] h-screen pb-[10vh]">
         <div className="rounded ring-1 bg-blue-100 ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
           <div className="px-3 py-4 grid place-items-center text-3xl font-bold ">
-            Login{" "}
+            Admin Login{" "}
           </div>
           <form
             onSubmit={(e) => {

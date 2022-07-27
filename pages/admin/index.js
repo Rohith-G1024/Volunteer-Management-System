@@ -3,11 +3,16 @@ import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import Head from "next/head";
 import axios from "axios";
-import { AgGridReact } from "ag-grid-react";
-import "ag-grid-community/dist/styles/ag-grid.css";
-import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import useSWR from "swr";
+import Router from "next/router";
+
+function Login() {
+  useEffect(()=>{
+    alert("Please Login")
+    Router.push("/admin/login");
+  },[])
+ /*  return Router.push("/"); */
+ 
+}
 
 const AdminLoginPage = () => {
   const sideBarContent = [
@@ -17,8 +22,10 @@ const AdminLoginPage = () => {
     { title: "Logout", link: "/logout", logo: "/logout.png" },
   ];
   const [isLogin, setIsLogin] = useState(true);
-  const sessionUsername = sessionStorage.getItem("username");
-
+  var sessionUsername;
+  if(typeof window!=="undefined"){
+    sessionUsername = sessionStorage.getItem("username");
+  }
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [imgLink, setImgLink] = useState("");
@@ -159,7 +166,7 @@ const AdminLoginPage = () => {
   ];
   return (
     <div>
-      {sessionUsername.length > 0 ? (
+      {sessionUsername &&  sessionUsername.length > 0 ? (
         <div>
           <Head>
             <title>Home Page | Volunteers</title>
@@ -307,7 +314,7 @@ const AdminLoginPage = () => {
           </div>
         </div>
       ) : (
-        <div></div>
+        <Login/>
       )}
     </div>
   );
