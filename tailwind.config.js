@@ -35,7 +35,7 @@ module.exports = {
         lgbackground2: "url('/g1.jpg')",
         lgbackground3: "url('/overlaypic.jpg')",
         tealgrad: "url('/tealgrad.jpeg')",
-        navbar:"url('/navbar.jpg')",
+        // navbar:"url('/navbar.jpg')",
       },
     },
   

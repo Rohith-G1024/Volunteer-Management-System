@@ -18,7 +18,7 @@ function NavBarOption({ item }) {
 function Navbar({ content }) {
   return (
     <div>
-      <div className="w-screen group  h-[70px] bg-navbar">
+      <div className="w-screen group  h-[70px] bg-[url('/navbar.jpg')] bg-cover">
         <div className="flex flex-row justify-between">
           <div className="ml-5 px-2 py-2">
             <Link href="/">
