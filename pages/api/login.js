@@ -16,6 +16,7 @@ export default async function handler(req, res) {
       Student.findOne({ email: email, password: password }, (err, doc) => {
         if (err) console.log(err);
         else if (doc) {
+          console.log(doc)
           res.status(200).json({ doc });
           // return;
         } else {

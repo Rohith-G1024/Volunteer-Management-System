@@ -194,11 +194,14 @@ function SignUp(props) {
         phone: phone,
         dob: dob,
         gender: gender,
-        availableStartTime: availableStartTime,
-        availableEndTime: availableEndTime,
+        startTime: availableStartTime,
+        endTime: availableEndTime,
         collegeName: collegeName,
         course: course,
         type: finalTypeValue,
+        isPc: false,
+        eventOngoing: null,
+        eventsCompleted: []
       };
     }
     if (finalTypeValue == 2) {
@@ -213,6 +216,9 @@ function SignUp(props) {
         availableEndTime: availableEndTime,
         profession: profession,
         type: finalTypeValue,
+        isPc: false,
+        eventOngoing: null,
+        eventsCompleted: []
       };
     }
     if (finalTypeValue == 3) {
@@ -227,6 +233,8 @@ function SignUp(props) {
         repName: repName,
         groupSize: groupSize,
         type: finalTypeValue,
+        eventOngoing: null,
+        eventsCompleted: []
       };
     }
     if (finalTypeValue == 4) {
@@ -237,6 +245,7 @@ function SignUp(props) {
         address: address,
         phone: phone,
         type: finalTypeValue,
+        mouApproved: false
       };
     }
     //console.log("response", finalTypeValue, response);

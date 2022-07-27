@@ -52,7 +52,6 @@ function VolunteerHomePage(props) {
           <Navbar content={navBarContent} />
           <div className="flex flex-row">
             <Sidebar content={sideBarContent} />
-            {sessionMail}
           </div>
         </div>
       ) : (

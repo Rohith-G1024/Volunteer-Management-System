@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 import Navbar from "../components/Navbar";
 
 const HomePage = () => {
-  const [view, setView] = useState(false);
+  const [view, setView] = useState(true);
   const [value, setValue] = useState("");
   const content = [
     {
@@ -41,7 +41,7 @@ const HomePage = () => {
             className={`  my-20 w-[60vw] h-[400px] rounded-xl ml-20 hover:scale-105 transition-all duration-200 ${
               view
                 ? "bg-[url('/ngo-child.jpg')] bg-auto  bg-no-repeat text-gray-200  duration-200"
-                : "bg-[url('/plant.jpeg')] bg-cover  bg-no-repeat text-gray-200  duration-200"
+                : " bg-slate-600/30 shadow-lg shadow-gray-800 text-gray-800  duration-200"
             }`}
           >
             <div className="text-5xl font-bold mt-[100px] ml-2 font-poppins ">
