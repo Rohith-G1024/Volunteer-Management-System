@@ -12,8 +12,7 @@ export default async function handler(req, res) {
 			res.status(200).json({ doc });
 		} 
 		else {
-			console.log("Document not found.");
-			res.status(300).json({ message: "colege login failed" });
+			console.log("Document not found. College login failed");
 		}
 	})
 	return;

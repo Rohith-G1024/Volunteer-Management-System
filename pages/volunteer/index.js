@@ -16,8 +16,9 @@ function VolunteerHomePage(props) {
     { title: "Logout", link: "/logout", logo: "/favicon.ico" },
   ];
   const [isLogin, setIsLogin] = useState(true);
+  var sessionMail;
   if (sessionStorage) {
-    const sessionMail = sessionStorage.getItem("email");
+    sessionMail = sessionStorage.getItem("email");
   }
 
   var navBarContent = [
@@ -52,6 +53,7 @@ function VolunteerHomePage(props) {
           <Navbar content={navBarContent} />
           <div className="flex flex-row">
             <Sidebar content={sideBarContent} />
+            {JSON.stringify(sessionMail)};
           </div>
         </div>
       ) : (
