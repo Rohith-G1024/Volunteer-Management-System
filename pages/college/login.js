@@ -120,7 +120,7 @@ function Login({}) {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                placeholder={"*********"}
+                placeholder={"password"}
               ></input>
             </div>
             <input
