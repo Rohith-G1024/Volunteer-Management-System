@@ -107,7 +107,7 @@ function SignUp(props) {
     "23:00",
   ];
   const basic_input = [
-    { value: name, setValue: setName, label: "Name", placeHolder: "John Doe" },
+    { value: name, setValue: setName, label: "Name", placeHolder: "John Doe", class:"bg-sky-400"},
     {
       value: email,
       setValue: setEmail,
@@ -282,15 +282,13 @@ function SignUp(props) {
 
   return (
     <div
-      className={`bg-blue-50 w-screen h-${
+      className={`bg-[url('/navbar.jpg')] bg-cover w-screen h-${
         !typeValue && !finalTypeValue ? "screen" : "auto"
       } pb-[${finalTypeValue ? "90" : "10"}vh]`}
     >
       <Navbar content={navBarContent} />
-      <div className="rounded ring-1 bg-blue-100 mt-[40px] ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
-        <div className="px-3 py-4 grid place-items-center text-3xl font-bold ">
-          Fill the Signup form
-        </div>
+      <div className="    mt-[40px] ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
+     
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -298,14 +296,15 @@ function SignUp(props) {
           }}
         >
           <div className="px-5 py-2 ">
-            <label
-              className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
-              htmlFor="type"
-            >
-              Type
-            </label>
+          
+          <label
+                  className="text-lg text text-sky-400 font-semibold pt-2 ml-[20vw] -mr-[28vw]  "
+                  htmlFor="type"
+                >
+                 Type
+                </label>
             <select
-              className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+              className="pl-2 px-50 mb-2 py-1 rounded-lg  mx-[35vw]  bg-white "
               onChange={(e) => {
                 setSubType(e.target.value);
               }}
@@ -317,13 +316,13 @@ function SignUp(props) {
             {typeValue === 1 && (
               <div className="mt-5">
                 <label
-                  className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
+                  className="text-lg text text-sky-400 font-semibold pt-2 ml-[20vw] -mr-[18vw]"
                   htmlFor="type"
                 >
                   Volunteer Type
                 </label>
                 <select
-                  className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                  className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]  bg-white"
                   onChange={(e) => {
                     setType(e.target.value);
                   }}
@@ -338,7 +337,7 @@ function SignUp(props) {
                     <Basic basic_input={basic_input} Inputfield={InputField} />
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="Gender"
                       >
                         Gender
@@ -357,7 +356,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Availablity Start Time
@@ -380,7 +379,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Availablity END Time
@@ -403,7 +402,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         College Name
@@ -422,7 +421,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Course
@@ -446,7 +445,7 @@ function SignUp(props) {
                     <Basic basic_input={basic_input} Inputfield={InputField} />
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="Gender"
                       >
                         Gender
@@ -465,7 +464,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Availablity Start Time
@@ -488,7 +487,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Availablity END Time
@@ -511,7 +510,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-4000 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="Profession"
                       >
                         Profession
@@ -533,7 +532,7 @@ function SignUp(props) {
                     <Basic basic_input={basic_input} Inputfield={InputField} />
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Availablity Start Time
@@ -556,7 +555,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="college"
                       >
                         Availablity END Time
@@ -579,7 +578,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="RepName"
                       >
                         Representative Name
@@ -596,7 +595,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="Profession"
                       >
                         Profession
@@ -613,7 +612,7 @@ function SignUp(props) {
                     </div>
                     <div className="flex flex-col">
                       <label
-                        className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                        className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                         htmlFor="GroupSize"
                       >
                         Group Size
@@ -636,7 +635,7 @@ function SignUp(props) {
               <div>
                 <div className="flex flex-col">
                   <label
-                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                     htmlFor="Name"
                   >
                     College Name
@@ -653,7 +652,7 @@ function SignUp(props) {
                 </div>
                 <div className="flex flex-col">
                   <label
-                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                     htmlFor="email"
                   >
                     College Email ID
@@ -670,7 +669,7 @@ function SignUp(props) {
                 </div>
                 <div className="flex flex-col">
                   <label
-                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                     htmlFor="email"
                   >
                     Password
@@ -687,7 +686,7 @@ function SignUp(props) {
                 </div>
                 <div className="flex flex-col">
                   <label
-                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                     htmlFor="email"
                   >
                     Confirm Password
@@ -704,7 +703,7 @@ function SignUp(props) {
                 </div>
                 <div className="flex flex-col">
                   <label
-                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                     htmlFor="address"
                   >
                     Address
@@ -721,7 +720,7 @@ function SignUp(props) {
                 </div>
                 <div className="flex flex-col">
                   <label
-                    className="text-gray-800 text-lg font-semibold pt-2 mx-[20vw]"
+                    className="text-sky-400 text-lg font-semibold pt-2 mx-[20vw]"
                     htmlFor="phone"
                   >
                     Phone Number

@@ -72,10 +72,11 @@ function Login({}) {
   return (
     <div>
       <Navbar content={navBarContent} />
-      <div className="bg-blue-50 w-screen pt-[40px] h-screen pb-[10vh]">
-        <div className="rounded ring-1 bg-blue-100 ml-[10vw] w-[75vw]  place-items-center h-auto py-[5vh]">
-          <div className="px-3 py-4 grid place-items-center text-3xl font-bold ">
-            Login{" "}
+      <div className="bg-[url('/navbar.jpg')] bg-cover w-screen pt-[40px] h-screen pb-[10vh]">
+        <div className="rounded ring-2 ring-sky-400 bg-blue-100 ml-[30vw] w-[40vw] mt-[9vh] place-items-center h-auto py-[5vh] bg-[url('/navbar.jpg')] bg-cover">
+          <div className="relative px-3 py-4 grid place-items-center text-3xl font-bold font-yellowtail text-sky-400  ">
+          <svg class="absolute -mt-[120px]  mx-[800px] border-2  border-sky bg-lgbackground3 text-sky w-20 h-20 bg-transparent blur-none "  fill="none" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+   
           </div>
           <form
             onSubmit={(e) => {
@@ -84,35 +85,29 @@ function Login({}) {
             }}
           >
             <div className="px-5 py-2 ">
-              <label
-                className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
-                htmlFor="type"
-              >
-                Email Id
-              </label>
+          
               <input
-                className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                className="px-2 mb-2 py-1  mx-[9vw]  item-align-center text-center placeholder placeholder-black ring-2 ring-sky-400 rounded-sm  w-[350px] h-[60px]   bg-white text-black"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
                 placeholder={"test@gmail.com"}
               />
+                 <svg class="absolute w-8 h-8 text-white -mt-[6vh] mx-[27vw] " stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> 
+           
             </div>
             <div className="px-5 py-2 ">
-              <div className="flex flex-row">
-                <label
-                  className="text-lg font-semibold pt-2 ml-[20vw] -mr-[18vw]"
-                  htmlFor="type"
-                >
-                  Password
+              <div className="flex flex-row relative">
+                
+                  
                   <span>
                     {view ? (
                       <svg
                         onClick={() => {
                           setView(!view);
                         }}
-                        class=" w-7 h-7 text-grey  "
+                        class=" absolute w-7 h-7  text-grey mt-3 mx-[27vw]" 
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +124,7 @@ function Login({}) {
                         onClick={() => {
                           setView(!view);
                         }}
-                        class=" w-7 h-7  text-grey"
+                        class="absolute w-7 h-7  text-grey mt-3 mx-[27vw] " 
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -143,21 +138,21 @@ function Login({}) {
                       </svg>
                     )}
                   </span>
-                </label>
+                
               </div>
               <input
                 type={view ? "text" : "password"}
-                className="px-2 mb-2 py-1 rounded-lg  mx-[20vw]"
+                className="px-2 mb-2 py-1 rounded-sm  mx-[9vw]      item-align-center text-center placeholder placeholder-black ring-2 ring-sky-400   w-[350px] h-[60px]   bg-white text-black"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                placeholder={"*********"}
+                placeholder={"Password"}
               ></input>
             </div>
             <input
               type="submit"
-              className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg mx-[20vw]"
+              className=" bg[url('/navbar.jpg')] ring-1 ring-sky-400 text-sky-400 hover:bg-sky-400 hover:text-black font-bold py-2 px-4 rounded-sm mx-[18vw]"
             ></input>
           </form>
         </div>

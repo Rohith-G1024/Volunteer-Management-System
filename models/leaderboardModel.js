@@ -2,10 +2,7 @@ import { Schema, model, models } from 'mongoose';
 
 const ldrbrdSchema = new Schema({
 	s_email: String,
-	eventId: String,
-	pcEdited: Boolean,
-    imgLinks: [String],
-	desc: String
+	points: Number,
 });
 
 const Leaderboard = models.Leaderboard || model('Leaderboard', ldrbrdSchema);
