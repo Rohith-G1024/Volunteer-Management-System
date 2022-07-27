@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Typewriter from "typewriter-effect";
 import EventHelper from "../components/EventHelper";
+import axios from "axios";
 
 const AdminEventsPage = () => {
   const shadowColor = ["shadow-cyan-500", "shadow-blue-500"];
@@ -52,6 +53,17 @@ const AdminEventsPage = () => {
       link: "/events",
     },
   ];
+  const [flag, setFlag] = useState(false);
+  const [eventList, setEventList] = useState([]);
+  const fetcher1 = async () => {
+    const tempList = await axios.get("http://localhost:3000/api/event/view");
+    console.log(tempList);
+    setEventList(tempList.data.doc);
+  };
+  if (!flag) {
+    fetcher1();
+    setFlag(true);
+  }
   return (
     <div>
       <Navbar content={navBarContent} />
@@ -72,7 +84,7 @@ const AdminEventsPage = () => {
           </div>
         </div>
         <div className="flex flex-col mt-5 gap-10 mb-10 ">
-          {content.map((item, index) => {
+          {eventList.map((item, index) => {
             return (
               <EventHelper
                 side={side[index % 2]}

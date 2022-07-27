@@ -3,7 +3,7 @@ import Link from "next/link";
 const { useAnimation, motion } = require("framer-motion");
 const { useInView } = require("react-intersection-observer");
 
-function EventHelper({ shadowColor, side, title, imgLink, desc, shareLink }) {
+function EventHelper({ shadowColor, side, title, imgLink, desc, status }) {
   const { ref, inView } = useInView({ threshold: 0.6 });
   const [done, setDone] = useState(false);
   const animation = useAnimation();
@@ -88,7 +88,14 @@ function EventHelper({ shadowColor, side, title, imgLink, desc, shareLink }) {
           <div className="p-3 -ml-[10px] group-hover:scale-90 transition-all duration-300">
             <img src={imgLink} alt={title} width={500} height={500} />
           </div>
-          <div className="py-3 my-[80px]">
+          <div className="py-3 mt-[20px] my-[80px]">
+            <div
+              className={`px-3 ml-[30vw] group-hover:rotate-[15deg] transition-all duration-300 -mt-[40px] mb-[20px]  ${
+                status === "ongoing" ? "bg-green-400" : "bg-blue-500"
+              }`}
+            >
+              {status}{" "}
+            </div>
             <div className="text-3xl font-bold pb-10 group-hover:scale-105 group-hover:text-blue-700 transition-all duration-200">
               {title}
             </div>
@@ -104,8 +111,14 @@ function EventHelper({ shadowColor, side, title, imgLink, desc, shareLink }) {
               >
                 <a className="text-blue-800 hover:underline">Share this</a>
               </div> */}
-              <Link href={shareLink}>
-                <a className="text-blue-800 hover:underline">Share this</a>
+              <Link href={imgLink}>
+                <a
+                  target="_blank"
+                  className="text-blue-800 flex flex-row gap-2 hover:underline"
+                >
+                  <img className="" src="/share.png" width={20} height={20} />
+                  <span>Share this</span>
+                </a>
               </Link>
             </div>
           </div>
