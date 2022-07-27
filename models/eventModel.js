@@ -6,8 +6,7 @@ const eventSchema = new Schema({
   desc: String,
   imgLink: String,
   type: String,
-  status: String,
-  stype: Number
+  status: String
 });
 
 const Event = models.Event || model("Event", eventSchema);

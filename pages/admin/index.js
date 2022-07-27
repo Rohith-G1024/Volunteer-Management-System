@@ -26,10 +26,29 @@ const AdminLoginPage = () => {
   const [pcEmail, setPcEmail] = useState("");
   const [flag, setFlag] = useState(false);
 
-  var columns = [];
-  var rowData = [];
+  const [columns, setColumns] = useState([]);
+  const [rowData, setRowData] = useState([]);
   const [options, setOptions] = useState([]);
   const [eventList, setEventList] = useState([]);
+  const [targetEvent, setTargetEvent] = useState([]);
+  const [viewDetails, setViewDetails] = useState(false);
+
+  const [updatedStatus, setUpdatedStatus] = useState("");
+  const [updatedTitle, setUpdatedTitle] = useState("");
+
+  useEffect(() => {
+    if (targetEvent == "") {
+      setViewDetails(false);
+    } else {
+      setViewDetails(true);
+      for (let i = 0; i < eventList.length; i++) {
+        if (eventList[i].pcEmail === targetEvent) {
+          //console.log(eventList[i]);
+          setUpdatedTitle(eventList[i].title);
+        }
+      }
+    }
+  }, [targetEvent]);
 
   const ref1 = useRef();
 
@@ -37,6 +56,7 @@ const AdminLoginPage = () => {
     const op1 = await axios.get("http://localhost:3000/api/event/getPC1");
     const op2 = await axios.get("http://localhost:3000/api/event/getPC2");
     const tempList = await axios.get("http://localhost:3000/api/event/view");
+    console.log(tempList.data);
     for (var i = 0; i < op1.data.doc.length; i++) {
       options.push({
         pcEmail: op1.data.doc[i].email,
@@ -60,12 +80,31 @@ const AdminLoginPage = () => {
         type: tempList.data.doc[i].type,
         status: tempList.data.doc[i].status,
       });
+      setEventList(eventList);
     }
-    setEventList(eventList);
-    console.log("eventlist", eventList);
 
-    //console.log("options", op1, op2, options);
+    console.log("eventlist", eventList);
   };
+
+  /* function viewTable() {
+    var tcolumns = [];
+    var trowData = [];
+    var keys = Object.keys(eventList[0]);
+    for (var i = 0; i < keys.length; i++) {
+      tcolumns.push({ headerName: keys[i], field: keys[i] });
+      setColumns(tcolumns);
+    }
+    for (var i = 0; i < eventList.length; i++) {
+      var temp = {};
+      for (var j = 0; j < keys.length; j++) {
+        temp[keys[j]] = eventList[i][keys[j]];
+      }
+      trowData.push(temp);
+      setRowData(trowData);
+    }
+    console.log("columns", columns);
+    console.log("rowData", rowData);
+  } */
 
   if (!flag) {
     fetcher1();
@@ -78,16 +117,30 @@ const AdminLoginPage = () => {
 
   //
 
-  function handleCreateEventSubmit() {
+  async function handleCreateEventSubmit() {
     var data = {
       title: title,
       desc: desc,
       imgLink: imgLink,
       type: type,
       pcEmail: pcEmail,
+      status: "ongoing",
       //s_type: "null",
     };
-    console.log("create-event", data);
+    const res = await axios.post(
+      "http://localhost:3000/api/event/create",
+      data
+    );
+    console.log("response", res);
+  }
+
+  async function handleUpdateSubmit() {
+    var data = {
+      pcEmail: targetEvent,
+      status: updatedStatus,
+      title: updatedTitle,
+    };
+    console.log("updated", data);
   }
 
   var navBarContent = [
@@ -191,28 +244,61 @@ const AdminLoginPage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-blue-50 w-[100%]">
+                <div className="bg-blue-50 min-h-[100px] w-[100%]">
                   <div className="p-3 m-3 group">
                     <div className="w-full bg-blue-200 text-2xl group-hover:text-[25px] transition-all duration-200 font-bold py-3 px-8 ring-1">
                       Update Event Status
                     </div>
-                    <div
-                      className=" mt-10 ag-theme-alpine"
-                      style={{
-                        height: "45vh",
-                        width: "100%",
-                      }}
-                    >
-                      <AgGridReact
-                        ref={ref1}
-                        columnDefs={columns}
-                        rowData={rowData}
-                        rowHeight={40}
-                        //onGridReady={gridRef.current.sizeColumnsToFit()}
-                        //onGridColumnsChanged={sizeToFit}
-                        //suppressRowClickSelection={true}
-                        rowSelection="single"
-                      ></AgGridReact>
+                    <div className="flex flex-col mt-4 gap-2 text-lg">
+                      <label>Select a Event</label>
+                      <select
+                        onChange={(e) => {
+                          setTargetEvent(e.target.value);
+                        }}
+                      >
+                        <option value="">Select</option>
+                        {eventList.map((item, index) => {
+                          return (
+                            <option value={item.pcEmail}>{item.title}</option>
+                          );
+                        })}
+                      </select>
+                      {viewDetails && (
+                        <div>
+                          <div className="flex flex-col mt-4 gap-2 text-lg">
+                            <label>Update Status</label>
+                            <select
+                              value={updatedStatus}
+                              onChange={(e) => {
+                                setUpdatedStatus(e.target.value);
+                              }}
+                            >
+                              <option
+                                //selected={updatedStatus === "ongoing" && true}
+                                value="ongoing"
+                              >
+                                Ongoing
+                              </option>
+                              <option
+                                //selected={updatedStatus === "completed" && true}
+                                value="completed"
+                              >
+                                Completed
+                              </option>
+                            </select>
+                          </div>
+                          <div className="flex flex-col mt-10 gap-2 text-lg">
+                            <button
+                              onClick={() => {
+                                handleUpdateSubmit();
+                              }}
+                              className="px-3 py-2 bg-green-500 hover:bg-green-600 hover:scale-90 transition-all duration-300"
+                            >
+                              Update
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
