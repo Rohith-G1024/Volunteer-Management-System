@@ -14,14 +14,14 @@ export default async function handler(req, res) {
       const password = req.query.password;
 
       Student.findOne({ email: email, password: password }, (err, doc) => {
-        if (err) console.log(err);
+        if (err) console.log("err1",err);
         else if (doc) {
           console.log(doc)
           res.status(200).json({ doc });
           // return;
         } else {
           General.findOne({ email: email, password: password }, (err, doc) => {
-            if (err) console.log(err);
+            if (err) console.log("err2",err);
             else if (doc) {
               console.log("here");
               res.status(200).json({ doc });
@@ -29,14 +29,16 @@ export default async function handler(req, res) {
               Group.findOne(
                 { email: email, password: password },
                 (err, doc) => {
-                  if (err) console.log(err);
+                  if (err) console.log("err3",err);
                   else if (doc) {
                     res.status(200).json({ doc });
                     // return;
                   } else {
+                    // alert("Invalid credentials")
                     console.log("here2");
                     console.log("Document not found.");
-                    res.status(300).json({ message: "login failed" });
+                    res.status(401).json({ message: "login failed" }).end();
+                    // res.end()
                   }
                 }
               );

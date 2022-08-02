@@ -31,11 +31,11 @@ const HomePage = () => {
         <div className="flex flex-row ">
           <div
             onMouseEnter={() => {
-              console.log("mouse enter");
+              // console.log("mouse enter");
               setView(true);
             }}
             onMouseLeave={() => {
-              console.log("mouse leave");
+              // console.log("mouse leave");
               setView(false);
             }}
             className={` my-10 w-[93vw]   text-white h-[300px] rounded-xl ml-10  text-center  scale-105 transition-all duration-200 ${
@@ -71,11 +71,11 @@ const HomePage = () => {
          <div className="flex flex-row ">
           <div
             onMouseEnter={() => {
-              console.log("mouse enter");
+              // console.log("mouse enter");
               setView(true);
             }}
             onMouseLeave={() => {
-              console.log("mouse leave");
+              // console.log("mouse leave");
               setView(false);
             }}
             className={`  my-5 w-[100vw] h-[350px] rounded-xl    hover:scale-105 transition-all duration-200 ${
@@ -127,15 +127,15 @@ const HomePage = () => {
             />
           </div >
           <div className="    font-yellowtail text-sky-400 text-2xl  text-center  "> <br/>
-           <div class="text-center">  
+           <div className="text-center">  
               Our website is run by the humble volunteers, for the people </div>
               <br/>
-              <div class=" grid grid-flow-col h-[120px] w-[200px] gap-2 mix-blend-multiply  mx-[45%]">
+              <div className=" grid grid-flow-col h-[120px] w-[200px] gap-2 mix-blend-multiply  mx-[45%]">
                 <img src="/wa.jpeg"></img>
                 <img src="/mail.jpg"></img>
               </div>
-              <div class=""> <b>Contact Us</b> : <i>8497876914 </i></div>
-              <div class=""> <b>Text Us </b>: <i> srishtingo@gmail.com </i></div>
+              <div className=""> <b>Contact Us</b> : <i>8497876914 </i></div>
+              <div className=""> <b>Text Us </b>: <i> srishtingo@gmail.com </i></div>
             </div>
                  
                 

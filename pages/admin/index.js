@@ -4,9 +4,11 @@ import Navbar from "../../components/Navbar";
 import Head from "next/head";
 import axios from "axios";
 import Router from "next/router";
+import { parseCookies } from "../helpers";
 
 function Login() {
   useEffect(()=>{
+    console.log("something")
     alert("Please Login")
     Router.push("/admin/login");
   },[])
@@ -14,18 +16,21 @@ function Login() {
  
 }
 
-const AdminLoginPage = () => {
+const AdminLoginPage = (props) => {
+  const data = props.data
+  console.log("/admin")
+  console.log("admin data",data);
   const sideBarContent = [
-    { title: "Home", link: "/volunteer", logo: "/home.png" },
+    { title: "Home", link: "/", logo: "/home.png" },
     { title: "Events", link: "/events", logo: "/events.png" },
     { title: "Leaderboard", link: "/leaderboard", logo: "/leaderboard.png" },
     { title: "Logout", link: "/logout", logo: "/logout.png" },
   ];
   const [isLogin, setIsLogin] = useState(true);
-  var sessionUsername;
-  if(typeof window!=="undefined"){
-    sessionUsername = sessionStorage.getItem("username");
-  }
+  // var sessionUsername;
+  // if(typeof window!=="undefined"){
+  //   sessionUsername = sessionStorage.getItem("username");
+  // }
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [imgLink, setImgLink] = useState("");
@@ -63,7 +68,7 @@ const AdminLoginPage = () => {
     const op1 = await axios.get("http://localhost:3000/api/event/getPC1");
     const op2 = await axios.get("http://localhost:3000/api/event/getPC2");
     const tempList = await axios.get("http://localhost:3000/api/event/view");
-    console.log(tempList.data);
+    // console.log(tempList.data);
     for (var i = 0; i < op1.data.doc.length; i++) {
       options.push({
         pcEmail: op1.data.doc[i].email,
@@ -90,28 +95,9 @@ const AdminLoginPage = () => {
       setEventList(eventList);
     }
 
-    console.log("eventlist", eventList);
+    // console.log("eventlist", eventList);
   };
 
-  /* function viewTable() {
-    var tcolumns = [];
-    var trowData = [];
-    var keys = Object.keys(eventList[0]);
-    for (var i = 0; i < keys.length; i++) {
-      tcolumns.push({ headerName: keys[i], field: keys[i] });
-      setColumns(tcolumns);
-    }
-    for (var i = 0; i < eventList.length; i++) {
-      var temp = {};
-      for (var j = 0; j < keys.length; j++) {
-        temp[keys[j]] = eventList[i][keys[j]];
-      }
-      trowData.push(temp);
-      setRowData(trowData);
-    }
-    console.log("columns", columns);
-    console.log("rowData", rowData);
-  } */
 
   if (!flag) {
     fetcher1();
@@ -166,7 +152,7 @@ const AdminLoginPage = () => {
   ];
   return (
     <div>
-      {sessionUsername &&  sessionUsername.length > 0 ? (
+      {data["user"]==="admin" ? (
         <div>
           <Head>
             <title>Home Page | Volunteers</title>
@@ -320,4 +306,25 @@ const AdminLoginPage = () => {
   );
 };
 
+export async function getServerSideProps ({req,res})  {
+  const data = parseCookies(req)
+
+  console.log('admin here')
+  if (res) {
+    // console.log("res:",res);
+    console.log("data:",data);
+    if (Object.keys(data).length === 0 && data.constructor === Object) {
+      res.writeHead(301, { Location: "/admin/login" })
+      res.end()
+    }
+    else console.log("normal admin")
+  }
+  else console.log("lol")
+
+  return {
+    props:{data: data && data,}
+  }
+}
+
 export default AdminLoginPage;
+
